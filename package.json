@@ -1,0 +1,13 @@
+{
+  "name": "vendor-quotation-system",
+  "version": "1.0.0",
+  "description": "Vendor Management & Quotation System — Teyzix Core Internship Task FS-2",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "seed": "npm run seed --prefix server",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client"
+  },
+  "license": "ISC"
+}

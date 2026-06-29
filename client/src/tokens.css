@@ -1,0 +1,185 @@
+/* ============================================================
+   DESIGN TOKENS
+   Vendor & Quotation System.
+   Indigo/violet-blue primary, clean light surface, amber
+   reserved exclusively for "best value" signals.
+   ============================================================ */
+
+:root {
+  /* Color */
+  --color-bg: #F6F6FB;
+  --color-surface: #FFFFFF;
+  --color-surface-sunken: #EFEEF9;
+  --color-primary: #5B4FE0;
+  --color-primary-light: #6F62EA;
+  --color-primary-pale: #EEECFC;
+  --color-sidebar-bg: #5B4FE0;
+  --color-sidebar-active: #6F62EA;
+  --color-accent: #C8862D;
+  --color-accent-pale: #FBF1E1;
+  --color-text: #1F1E2E;
+  --color-text-muted: #6B6B85;
+  --color-text-faint: #9C9AB5;
+  --color-border: #E2E0F0;
+  --color-border-strong: #C9C5E8;
+
+  --color-status-pending-bg: #EFEEF5;
+  --color-status-pending-text: #6B6378;
+  --color-status-submitted-bg: #E7EEF8;
+  --color-status-submitted-text: #2C5C8C;
+  --color-status-approved-bg: #E6F1EA;
+  --color-status-approved-text: #1F7048;
+  --color-status-rejected-bg: #FBE9EC;
+  --color-status-rejected-text: #B3354F;
+
+  --color-row-highlight-hover: #F6E7CB;
+
+  color-scheme: light;
+
+  /* Type */
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+
+  /* Layout */
+  --sidebar-width: 248px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --shadow-card: 0 1px 2px rgba(60, 50, 150, 0.07), 0 1px 1px rgba(60, 50, 150, 0.04);
+  --shadow-popover: 0 8px 24px rgba(60, 50, 150, 0.14), 0 2px 6px rgba(60, 50, 150, 0.08);
+}
+
+/* ------------------------------------------------------------
+   DARK THEME
+   Same system at night: deep indigo-black bg (not pure black),
+   brand brightened to violet-blue for contrast, amber kept warm
+   and reserved for "best value" signals.
+   Activated by setting data-theme="dark" on <html>.
+   ------------------------------------------------------------ */
+html[data-theme="dark"] {
+  --color-bg: #13121F;
+  --color-surface: #1C1B2E;
+  --color-surface-sunken: #0E0D17;
+  --color-primary: #8479F2;
+  --color-primary-light: #9A90F5;
+  --color-primary-pale: #221F3D;
+  --color-sidebar-bg: #18162A;
+  --color-sidebar-active: #241F40;
+  --color-accent: #E0A23F;
+  --color-accent-pale: #2A2013;
+  --color-text: #E9E7F2;
+  --color-text-muted: #9C9AB8;
+  --color-text-faint: #6B6985;
+  --color-border: #28263D;
+  --color-border-strong: #3B3859;
+
+  --color-status-pending-bg: #242230;
+  --color-status-pending-text: #C2BCD6;
+  --color-status-submitted-bg: #1C2A38;
+  --color-status-submitted-text: #7EB1D6;
+  --color-status-approved-bg: #16271F;
+  --color-status-approved-text: #5FC489;
+  --color-status-rejected-bg: #301F25;
+  --color-status-rejected-text: #E08A9A;
+
+  --color-row-highlight-hover: #3A2C16;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(0, 0, 0, 0.35);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Smooth, non-jarring switch between light/dark for the main surfaces */
+.card,
+.stat-card,
+.table-wrap,
+.modal-panel,
+.sidebar,
+.form-input,
+.form-select,
+.form-textarea {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Visible keyboard focus for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Tabular numbers for money/amounts throughout the app */
+.tabular {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+}
